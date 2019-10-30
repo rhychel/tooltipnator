@@ -2,6 +2,8 @@
 
 This is a tooltip library like you've never seen before.
 
+[![](https://jitpack.io/v/rhychel/tooltipnator.svg)](https://jitpack.io/#rhychel/tooltipnator)
+
 To build the tooltip dialog:
 ```java
     val tooltipDialog = TooltipDialog.Builder(this@MainActivity)  

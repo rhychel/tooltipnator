@@ -4,6 +4,8 @@ This is a tooltip library like you've never seen before.
 
 [![](https://jitpack.io/v/rhychel/tooltipnator.svg)](https://jitpack.io/#rhychel/tooltipnator)
 
+![](https://github.com/rhychel/tooltipnator/blob/master/tooltip.gif)
+
 To build the tooltip dialog:
 ```java
 val tooltipDialog = TooltipDialog.Builder(this)  

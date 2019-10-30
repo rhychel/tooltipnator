@@ -6,19 +6,24 @@ This is a tooltip library like you've never seen before.
 
 To build the tooltip dialog:
 ```java
-    val tooltipDialog = TooltipDialog.Builder(this@MainActivity)  
-	    // OPTIONAL!!! Use this if you only have a custom layout
-        .textContentLayout(R.layout.sample_tooltip_text_content) 
-        // OPTIONAL!!! Listener to detect when it tooltip overlay is closed
-        .onTooltipClosedListener {   
-        }
-        // OPTIONAL!!! You can ignore this if you don't have a custom layout with button
-        .closeButtonId(R.id.yourCustomButtonId)
-        // OPTIONAL!!! When a custom layout or the predefined layout is loaded, this is called.
-        .onContentLoadedListener { view, tooltipDialog,index ->  
+val tooltipDialog = TooltipDialog.Builder(this)  
+    
+    // OPTIONAL!!! Use this if you only have a custom layout
+    .textContentLayout(R.layout.sample_tooltip_text_content) 
+    
+    // OPTIONAL!!! Listener to detect when it tooltip overlay is closed
+    .onTooltipClosedListener {   
+    }
+    
+    // OPTIONAL!!! You can ignore this if you don't have a custom layout with button
+    .closeButtonId(R.id.yourCustomButtonId)
+
+    // OPTIONAL!!! When a custom layout or the predefined layout is loaded, this is called.
+    .onContentLoadedListener { view, tooltipDialog,index ->  
             
-        }
-        .build()
+    }
+
+    .build()
 ```
 You can use the tooltip dialog to show:
 
@@ -29,22 +34,22 @@ You can use the tooltip dialog to show:
 
  2. Sequenced Tooltips
  ```java
-   tooltipDialog.showSequenceTooltipDialog(
-	   mutableListOf(  
-			   TooltipDialogItem( 
-				   buttonTargetView,
-				   TooltipMaskShape.RECTANGLE
-			   ),
-			   TooltipDialogItem( 
-				   fabTargetView,
-				   TooltipMaskShape.CIRCLE
-			   ),
-			   TooltipDialogItem( 
-				   findViewById(R.id.mTarget), // Menu Item
-				   TooltipMaskShape.CIRCLE
-			   )
-	   )
-   )
+tooltipDialog.showSequenceTooltipDialog(
+    mutableListOf(  
+        TooltipDialogItem( 
+            buttonTargetView,
+            TooltipMaskShape.RECTANGLE
+        ),
+		TooltipDialogItem( 
+		    fabTargetView,
+			TooltipMaskShape.CIRCLE
+		),
+		TooltipDialogItem( 
+		    findViewById(R.id.mTarget), // Menu Item
+			TooltipMaskShape.CIRCLE
+		)
+    )
+)
  ```
 
 The predefined `ids` are:

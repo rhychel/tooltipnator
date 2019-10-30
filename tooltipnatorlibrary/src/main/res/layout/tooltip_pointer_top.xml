@@ -5,4 +5,4 @@
         android:cropToPadding="false"
         android:scaleType="centerCrop"
         android:rotation="180"
-        android:src="@drawable/ic_tooltip_pointer_top" />
+        android:src="@drawable/ic_tooltip_pointer" />

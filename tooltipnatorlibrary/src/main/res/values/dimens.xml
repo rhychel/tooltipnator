@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tooltip_pointer_width">20dp</dimen>
+    <dimen name="tooltip_pointer_height">8dp</dimen>
+
+    <dimen name="tooltip_layout_content_margin_start">8dp</dimen>
+    <dimen name="tooltip_layout_content_margin_end">8dp</dimen>
+</resources>

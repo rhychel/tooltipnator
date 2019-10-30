@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="layoutPointerTop" type="id"/>
+    <item name="layoutPointerBottom" type="id"/>
+    <item name="layoutContent" type="id"/>
+    <item name="layoutDialogContent" type="id"/>
+
+    <item name="tvTextContent" type="id"/>
+    <item name="tvSequenceTextContent" type="id"/>
+
+    <item name="btnDialogBack" type="id"/>
+    <item name="btnDialogNext" type="id"/>
+    <item name="btnDialogClose" type="id"/>
+
+    <item name="flTooltip" type="id"/>
+</resources>

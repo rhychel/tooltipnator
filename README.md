@@ -19,6 +19,9 @@ val tooltipDialog = TooltipDialog.Builder(this)
     
     // OPTIONAL!!! You can ignore this if you don't have a custom layout with button
     .closeButtonId(R.id.yourCustomButtonId)
+    
+    // OPTIONAL!!! If you want to disable tap anywhere to dismiss, set this to true. By default, it's false.
+    .disableTapAnywhere(false)
 
     // OPTIONAL!!! When a custom layout or the predefined layout is loaded, this is called.
     .onContentLoadedListener { view, tooltipDialog,index ->  

@@ -51,6 +51,7 @@ class TooltipDialog private constructor() {
         private var bCloseButtonId: Int? = null
         private var bOnTooltipClosed: () -> Unit = {}
         private var bOnContentLoaded: (View, TooltipDialog, Int) -> Unit = { _, _, _->}
+        private var disableTapAnywhere = false
 
         fun closeButtonId(id: Int): Builder {
             this.bCloseButtonId = id
@@ -72,6 +73,11 @@ class TooltipDialog private constructor() {
             return this
         }
 
+        fun disableTapAnywhere(shouldBeDisabled: Boolean): Builder {
+            this.disableTapAnywhere = shouldBeDisabled
+            return this
+        }
+
         fun build(): TooltipDialog {
             val tooltipHelper = TooltipDialog()
             with(tooltipHelper) {
@@ -87,7 +93,7 @@ class TooltipDialog private constructor() {
                 flTooltip.visibility = View.INVISIBLE
                 flTooltip.alpha = 0.0f
                 flTooltip.setOnClickListener {
-                    if(closeButtonId == null) { // Tap anywhere!
+                    if(!disableTapAnywhere) { // Tap anywhere!
                         dismissTooltipDialog()
                     }
                 }

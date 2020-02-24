@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.FrameLayout
 import androidx.annotation.LayoutRes
@@ -78,7 +79,7 @@ class TooltipDialog private constructor() {
             return this
         }
 
-        fun build(): TooltipDialog {
+        fun build(window: Window? = null): TooltipDialog {
             val tooltipHelper = TooltipDialog()
             with(tooltipHelper) {
                 layoutInflater = activity.layoutInflater
@@ -99,7 +100,7 @@ class TooltipDialog private constructor() {
                 }
 
                 val layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT)
-                rootContentArea = activity.window.decorView.findViewById(android.R.id.content) as ViewGroup
+                rootContentArea = (activity.window.takeUnless { window != null } ?: window!!).decorView.findViewById(android.R.id.content) as ViewGroup
                 rootContentArea.addView(flTooltip, layoutParams)
             }
 
@@ -494,10 +495,18 @@ class TooltipDialog private constructor() {
     private fun getTargetViewPosition(targetView: View): TargetViewPosition {
         val offsetViewBounds = Rect()
         targetView.getDrawingRect(offsetViewBounds)
-        rootContentArea.offsetDescendantRectToMyCoords(targetView, offsetViewBounds)
-        return TargetViewPosition(
+
+        val locationInWindow = IntArray(2) // [x, y]
+        targetView.getLocationInWindow(locationInWindow)
+//        rootContentArea.offsetDescendantRectToMyCoords(targetView, offsetViewBounds)
+        /*
+
             offsetViewBounds.left.toFloat(),
             offsetViewBounds.top.toFloat()
+         */
+        return TargetViewPosition(
+            locationInWindow[0].toFloat(),
+            locationInWindow[1].toFloat()
         )
     }
 

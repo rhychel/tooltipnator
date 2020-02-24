@@ -2,9 +2,12 @@ package com.github.rhychel.tooltipnator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import com.github.rhychel.tooltipnatorlibrary.TooltipDialog
 import com.github.rhychel.tooltipnatorlibrary.enums.TooltipMaskShape
 import com.github.rhychel.tooltipnatorlibrary.models.TooltipDialogItem
@@ -20,6 +23,22 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(tbActionbar)
         supportActionBar?.title = "Tooltipnator"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+
+        val view = LayoutInflater.from(this).inflate(R.layout.sample_for_dialog, null)
+        val alertDialog: AlertDialog = AlertDialog.Builder(this)
+            .setTitle("Point this dialog")
+            .setView(view)
+            .create()
+        alertDialog.show()
+        view.findViewById<Button>(R.id.btnSample).setOnClickListener {
+            TooltipDialog.Builder(this@MainActivity)
+                .onContentLoadedListener { view, _, _ ->
+                    (view as TextView).text = "This is a sample text tooltip dialog for menu items"
+                }
+                .build(alertDialog.window)
+                .showTextTooltipDialog(view.findViewById(R.id.tvSample), TooltipMaskShape.RECTANGLE)
+        }
 
         clickForSequence(
             TooltipDialogItem(
